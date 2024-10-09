@@ -3,7 +3,7 @@ from django.db import models
 
 class Category(models.Model):
     title = models.CharField(max_length=100)
-    category_id = models.IntegerField()
+    category_id = models.AutoField(primary_key=True)
     parent = models.ForeignKey(
         "self",
         on_delete=models.CASCADE,
@@ -31,7 +31,7 @@ class Product(models.Model):
     description = models.TextField()
     price = models.DecimalField(max_digits=5, decimal_places=2)
     categories = models.ManyToManyField(Category)
-    product_id = models.IntegerField()
+    product_id = models.AutoField(primary_key=True)
     product_image = models.ImageField(upload_to="products/")
 
     def __str__(self):
