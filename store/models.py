@@ -32,7 +32,7 @@ class Product(models.Model):
     price = models.DecimalField(max_digits=5, decimal_places=2)
     categories = models.ManyToManyField(Category)
     product_id = models.AutoField(primary_key=True)
-    product_image = models.ImageField(upload_to="products/")
+    product_image = models.ImageField(upload_to="store/product_images/")
 
     def __str__(self):
         return self.name
