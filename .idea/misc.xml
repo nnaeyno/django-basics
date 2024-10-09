@@ -4,6 +4,7 @@
     <option name="enabledOnSave" value="true" />
     <option name="executionMode" value="BINARY" />
     <option name="pathToExecutable" value="/Library/Frameworks/Python.framework/Versions/3.11/bin/black" />
+    <option name="sdkName" value="Python 3.11 (BendingSpoons)" />
   </component>
   <component name="ProjectRootManager" version="2" project-jdk-name="Python 3.11 (BendingSpoons)" project-jdk-type="Python SDK" />
 </project>
