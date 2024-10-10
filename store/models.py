@@ -17,13 +17,13 @@ class Category(models.Model):
 
     def get_main_category(self):
         if self.parent:
-            return f"{self.parent.get_main_category()} -> {self.title}"
-        return self.title
+            return f"{self.parent.get_main_category()}"
+        return f"{self.title, self.category_id}"
 
     def get_direct_category(self):
         if self.parent:
-            return self.parent.title
-        return self.title
+            return self.parent.title, self.parent.category_id
+        return self.title, self.category_id
 
 
 class Product(models.Model):
