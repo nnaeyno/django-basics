@@ -23,7 +23,7 @@ class Category(models.Model):
     def get_direct_category(self):
         if self.parent:
             return self.parent.title, self.parent.category_id
-        return self.title, self.category_id
+        return None, None
 
 
 class Product(models.Model):

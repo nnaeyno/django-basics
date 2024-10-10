@@ -20,7 +20,7 @@ def list_products(request):
             "product_id": product.product_id,
             "name": product.name,
             "description": product.description,
-            "price": str(product.price),  # Convert Decimal to string for JSON serialization
+            "price": str(product.price),
             "product_image": product.product_image.url if product.product_image else None,
             "categories": product_categories
         })
@@ -35,7 +35,9 @@ def get_categories(request):
     categories = Category.objects.all()
     data = []
     for category in categories:
-        parent_title, parent_id = category.get_main_category()
+        # ესე მეწერა თავიდან მარა ჩატში რომ ვიკითხე ლექტორმა პირდაპირი მშობელიო
+        # parent_title, parent_id = category.get_main_category()
+        parent_title, parent_id = category.get_direct_category()
         data.append({
             "id": category.category_id,
             "title": category.title,
