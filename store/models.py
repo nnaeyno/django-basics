@@ -17,8 +17,8 @@ class Category(models.Model):
 
     def get_main_category(self):
         if self.parent:
-            return f"{self.parent.get_main_category()}"
-        return f"{self.title, self.category_id}"
+            return self.parent.get_main_category()
+        return self.title, self.category_id
 
     def get_direct_category(self):
         if self.parent:
