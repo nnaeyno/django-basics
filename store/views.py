@@ -10,11 +10,12 @@ def list_products(request):
     for product in products:
         product_categories = []
         for category in product.categories.all():
-            parent_category_title, parent_category_id = category.get_direct_category()
+            # parent_category_title, parent_category_id = category.get_direct_category()
             product_categories.append({
                 "category_title": category.title,
-                "parent_category_title": parent_category_title,
-                "parent_category_id": parent_category_id,
+                "category_id": category.category_id,
+                # "parent_category_title": parent_category_title,
+                # "parent_category_id": parent_category_id,
             })
         data.append({
             "product_id": product.product_id,
