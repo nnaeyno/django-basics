@@ -4,7 +4,7 @@
 ⚠️ This project is still under development.
 
 * More features are planned as well as frontend/htmls need major updates
-* Code refactoring and optimizations are yet to be completed - querying is bad, method names need to be updated (overall it's messy).
+* Code refactoring and optimizations are yet to be completed - querying is bad (MPTT), method names need to be updated (overall it's messy).
 * bonus requirements will be added after the deadline
 
 ## Project Overview
