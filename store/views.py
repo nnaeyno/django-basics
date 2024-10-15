@@ -30,6 +30,7 @@ def list_products(request):
 
 
 def get_product(request):
+    # used the suggestion for new views thank you!
     return HttpResponse("One product")
 
 
