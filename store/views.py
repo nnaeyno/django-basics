@@ -87,3 +87,13 @@ def category_products(request, category_id):
     }
 
     return render(request, 'category_products.html', context)
+
+
+def product_detail(request, product_id):
+    product = get_object_or_404(Product, product_id=product_id)
+
+    context = {
+        'product': product
+    }
+
+    return render(request, 'product_detail.html', context)

@@ -3,7 +3,7 @@
 <ul>
     {% for product in products %}
         <li>
-            <h2>{{ product.name }}</h2>
+            <a href="{% url 'product_detail' product.product_id %}">{{ product.name }}</a>
             <p>{{ product.description }}</p>
             <p>Price: ${{ product.price }}</p>
             <p>Quantity: {{ product.quantity }}</p>

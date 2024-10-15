@@ -8,4 +8,5 @@ urlpatterns = [
     path("category/", views.list_top_level_categories),
     path('category/<int:category_id>/', views.category_detail, name='category_detail'),
     path('category/<int:category_id>/products/', views.category_products, name='category_products'),
+    path('product/<int:product_id>/', views.product_detail, name='product_detail'),
 ]
