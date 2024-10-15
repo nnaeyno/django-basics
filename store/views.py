@@ -49,3 +49,6 @@ def get_categories(request):
     return JsonResponse(data, safe=False)
 
 
+def list_top_level_categories(request):
+    top_level_categories = Category.objects.filter(parent__isnull=True)
+    return render(request, 'categories.html', {'categories': top_level_categories})
