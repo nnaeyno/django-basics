@@ -1,5 +1,5 @@
 from django.http import HttpResponse, JsonResponse
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 
 from store.models import Category, Product
 
@@ -50,5 +50,11 @@ def get_categories(request):
 
 
 def list_top_level_categories(request):
-    top_level_categories = Category.objects.filter(parent__isnull=True)
-    return render(request, 'categories.html', {'categories': top_level_categories})
+    categories = Category.objects.filter(parent__isnull=True)
+    return render(request, 'categories.html', {'categories': categories})
+
+
+def category_detail(request, category_id):
+    category = get_object_or_404(Category, category_id=category_id)
+    products = Product.objects.filter(categories=category)
+    return render(request, 'category.html', {'category': category, 'products': products})
