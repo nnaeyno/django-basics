@@ -1,5 +1,12 @@
 # Django Store Project
 
+## Current Status
+⚠️ This project is still under development.
+
+* More features are planned as well as frontend/htmls need major updates
+* Code refactoring and optimizations are yet to be completed - querying is bad, method names need to be updated (overall it's messy).
+* bonus requirements will be added after the deadline
+
 ## Project Overview
 
 This Django project is designed to manage products and their categories in an e-commerce-like setup. <br>
@@ -67,11 +74,6 @@ The `Product` model represents an item in the store.
 ]
 ```
 
-## Current Status
-⚠️ This project is still under development.
-
-* More features are planned, such as authentication, more API endpoints, and user management.
-* Code refactoring and optimizations are yet to be completed.
 
 
 

@@ -33,6 +33,11 @@ class Product(models.Model):
     categories = models.ManyToManyField(Category)
     product_id = models.AutoField(primary_key=True)
     product_image = models.ImageField(upload_to="store/product_images/")
+    quantity = models.IntegerField(default=1)
 
     def __str__(self):
         return self.name
+
+    @property
+    def overall_worth(self):
+        return self.price * self.quantity

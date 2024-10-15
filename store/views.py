@@ -1,3 +1,4 @@
+from django.db.models import Avg, Sum, F
 from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render, get_object_or_404
 
@@ -58,3 +59,31 @@ def category_detail(request, category_id):
     category = get_object_or_404(Category, category_id=category_id)
     products = Product.objects.filter(categories=category)
     return render(request, 'category.html', {'category': category, 'products': products})
+
+
+def get_all_subcategories(category):
+    subcategories = category.subcategories.all()
+    all_subcategories = list(subcategories)
+    for subcategory in subcategories:
+        all_subcategories += get_all_subcategories(subcategory)
+    return all_subcategories
+
+
+def category_products(request, category_id):
+    category = get_object_or_404(Category, pk=category_id)
+    subcategories = get_all_subcategories(category)
+    products = Product.objects.filter(categories__in=[category] + subcategories).distinct()
+    most_expensive = products.order_by('-price').first()
+    cheapest = products.order_by('price').first()
+    average_price = products.aggregate(average_price=Avg('price'))['average_price']
+    overall_worth = products.aggregate(total_worth=Sum(F('price') * F('quantity')))['total_worth']
+    context = {
+        'category': category,
+        'products': products,
+        'most_expensive': most_expensive,
+        'cheapest': cheapest,
+        'average_price': average_price,
+        'overall_worth': overall_worth,
+    }
+
+    return render(request, 'category_products.html', context)
