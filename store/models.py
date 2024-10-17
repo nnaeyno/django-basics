@@ -15,6 +15,10 @@ class Category(models.Model):
     def __str__(self):
         return self.title
 
+    class Meta:
+        verbose_name = 'Category'
+        verbose_name_plural = 'Categories'
+
     def get_main_category(self):
         if self.parent:
             return self.parent.get_main_category()

@@ -1,3 +1,5 @@
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 from django.utils import timezone
 
 from django.contrib.auth.base_user import BaseUserManager, AbstractBaseUser
@@ -39,3 +41,6 @@ class User(AbstractBaseUser, PermissionsMixin):
     class Meta:
         verbose_name = 'user'
         verbose_name_plural = 'users'
+
+
+
